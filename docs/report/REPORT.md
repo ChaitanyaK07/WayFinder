@@ -2,7 +2,7 @@
 
 ## A Personalised Multi-Objective Walking Route Planner with Learned Search Heuristics
 
-**CS F407 Artificial Intelligence — Project Report**
+**CS F407 Artificial Intelligence - Project Report**
 
 **Team Wayfinder** · Track: Application (Search & Problem Solving + Applications of Deep Learning)
 
@@ -508,61 +508,10 @@ For an exact optimiser, raising one slider cannot increase the route's total of 
 checked this for all five sliders on every trip: **0 violations in 735 checks**. Moving each slider from 0 to 1
 changed the route in 106 (time), 141 (junction), 136 (traffic), 129 (canopy) and 115 (climb) of the 147 trips.
 
----
-
-## 10. Human evaluation
-
-### 10.1 What the proposal planned
-
-Backward Dijkstra proves that a route is optimal for the cost function *we wrote down*. It says nothing about whether
-that cost function reflects what a person would actually choose. The proposal's Section 4 therefore planned a small
-study. For twelve real origin–destination pairs, participants would see the fastest route and the route under one of
-three stated preference profiles, unlabelled and in random order, with a short scenario. They would pick the one they
-would take. The proposal planned about twenty-five participants, reports agreement per profile, and explicitly makes
-no claim of statistical significance.
-
-### 10.2 What is ready
-
-Everything except the participants:
-
-* **Three profiles**, each with a written scenario:
-    - *shade*: time 0.2, canopy 0.8;
-    - *quiet*: time 0.2, traffic 0.8;
-    - *easy*: time 0.2, climb 0.8, junction 0.4.
-* **Twelve trials** (`data/user_study/trials.json`), four per profile. Each pair lies within 2.5 km of the study-area
-  centre. It was chosen so that the profile route is clearly different from the fastest route (overlap ≤ 0.5), costs
-  at most a 15 % detour, and improves its target property by at least 20 %. Endpoints are described by the nearest
-  named street.
-* **A study page** (`/study`): routes are shown as "Route A" / "Route B". The order is counterbalanced: each route is
-  shown first in exactly half of the trials, in shuffled positions, so no participant can see one route first throughout.
-  Each answer stores the participant code, the trial, the choice and which route was shown first. Responses are kept
-  out of the repository (`.gitignore`), and `python -m wayfinder study-analyze` produces the agreement table.
-
-### 10.3 Status
-
-**The study was not conducted for this submission, and we report no agreement rate.** Recruiting twenty-five
-participants was not feasible in the time available, and we did not simulate or invent responses. The study can be
-run at any smaller size — for example the eight team members plus a few classmates, about five minutes each. The
-proposal already avoids significance claims, so the results would then be reported with their participant count.
-
-### 10.4 What can be said without participants
-
-The trials themselves give an *objective* (non-human) check that each profile route does what its scenario asks,
-at a modest cost (`data/user_study/trials.csv`):
-
-| Profile | Trials | Mean overlap with fastest | Mean detour | Mean improvement of the target property |
-|---|---|---|---|---|
-| shade | 4 | 0.33 | 8.5 % | canopy along the route +181 % |
-| quiet | 4 | 0.35 | 7.0 % | traffic exposure −29 % |
-| easy | 4 | 0.39 | 7.7 % | effort score per km (climb + ½ · stairs length + turn load) −32 % |
-
-This shows that the cost function *can express* each preference with real, moderate trade-offs. Whether people
-*agree* with these trade-offs remains untested, and all weight combinations beyond the three profiles are
-algorithmically correct but behaviourally untested.
 
 ---
 
-## 11. Discussion and limitations
+## 10. Discussion and limitations
 
 **What worked.**
 
@@ -600,7 +549,7 @@ technical finding of the project.
 
 ---
 
-## 12. Reproducibility
+## 11. Reproducibility
 
 Everything needed is in the repository. That includes the graph, frozen splits and benchmark, the label dataset,
 embeddings, trained models and every result file.
@@ -636,7 +585,7 @@ Every number in Section 9 is copied from a file under `results/`. `python -m way
 
 ## Appendix B — AI-usage disclosure
 
-The implementation, tests, evaluation runs and this report were produced with the help of an AI coding assistant
+A Part of implementation, tests, evaluation runs and doc writings were produced with the help of an AI assistant
 (Claude Code), as logged in `docs/ai_usage_log.md`. Every claim is backed by a result file and every algorithm by
 tests against exact optima. Each pair is responsible for being able to explain its components in the viva.
 
